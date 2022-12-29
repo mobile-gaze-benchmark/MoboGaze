@@ -1,0 +1,35 @@
+---
+train:
+
+    params:
+        batch_size: 32
+        epoch: 400
+        lr: 0.0005
+        decay: 0.5
+        decay_step: 10
+        warmup: 5
+
+    save:
+        metapath: "/data1/lyx/codes/experiments/MoboGaze-200M_gaze360_6/"
+        folder: gaze360
+        model_name: MoboGaze
+        step: 10
+
+    data:
+        image: "/data1/lyx/dataset/gaze360/Image"
+        label: "/data1/lyx/dataset/gaze360/Label/train.label"
+        header: True
+        name: gaze360
+        isFolder: False
+        
+    pretrain:
+        enable: False
+        path: "/data1/lyx/codes/experiments/MoboGaze-200M_gaze360_4/gaze360/checkpoint/Iter_200_MoboGaze.pt"
+        # device: 0
+
+    # device: 0
+
+    reader: reader
+
+# dropout = 0
+# dim_feed = 512

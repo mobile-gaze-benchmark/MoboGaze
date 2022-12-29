@@ -1,0 +1,3 @@
+/data1/lyx/codes/experiments/MoboGaze-800M_gaze360_4/gaze360/checkpoint/Iter_50_MoboGaze.pt acc: 10.58
+/data1/lyx/codes/experiments/MoboGaze-400M_gaze360_5/gaze360/checkpoint/Iter_170_MoboGaze.pt acc: 10.64
+/data1/lyx/codes/experiments/MoboGaze-200M_gaze360_6/gaze360/checkpoint/Iter_10_MoboGaze.pt acc: 10.78

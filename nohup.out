@@ -1,0 +1,76 @@
+=====================>> (Begin) Training params << =======================
+{
+    "train": {
+        "params": {
+            "batch_size": 32,
+            "epoch": 80,
+            "lr": 0.0005,
+            "decay": 0.5,
+            "decay_step": 60,
+            "warmup": 5
+        },
+        "save": {
+            "metapath": "/data1/lyx/codes/experiments/mobilvit-2.0_gaze360/",
+            "folder": "gaze360",
+            "model_name": "trans6",
+            "step": 10
+        },
+        "data": {
+            "image": "/data1/lyx/dataset/gaze360/Image",
+            "label": "/data1/lyx/dataset/gaze360/Label/train.label",
+            "header": true,
+            "name": "gaze360",
+            "isFolder": false
+        },
+        "pretrain": {
+            "enable": false,
+            "path": "/data1/lyx/codes/mobilVit/pretrain/mobilevitv2-2.0.pt"
+        },
+        "reader": "reader"
+    }
+}
+=====================>> (End) Traning params << =======================
+===> Read data <===
+-- [Read Data]: Source: /data1/lyx/dataset/gaze360/Label/train.label
+-- [Read Data]: Total num: 84902
+===> Model building <===
+===> optimizer building <===
+===> Training <===
+[1/80]: [0/2654] loss:1.1133458614349365 lr:0.0001 rest time:292.66h
+[1/80]: [20/2654] loss:0.3875509202480316 lr:0.0001 rest time:29.27h
+[1/80]: [40/2654] loss:0.31309136748313904 lr:0.0001 rest time:22.88h
+[1/80]: [60/2654] loss:0.2991448640823364 lr:0.0001 rest time:20.74h
+[1/80]: [80/2654] loss:0.28301337361335754 lr:0.0001 rest time:19.58h
+[1/80]: [100/2654] loss:0.3084985017776489 lr:0.0001 rest time:18.92h
+Traceback (most recent call last):
+  File "trainer/total.py", line 163, in <module>
+    main(config.train)
+  File "trainer/total.py", line 113, in main
+    loss = net.loss(data, anno)
+  File "/data1/lyx/miniconda3/envs/torch/lib/python3.7/site-packages/cvnets-0.2-py3.7.egg/cvnets/models/classification/base_cls.py", line 338, in loss
+    gaze = self.forward(x_in['face'])
+  File "/data1/lyx/miniconda3/envs/torch/lib/python3.7/site-packages/cvnets-0.2-py3.7.egg/cvnets/models/classification/base_cls.py", line 145, in forward
+    x = self.extract_features(x)
+  File "/data1/lyx/miniconda3/envs/torch/lib/python3.7/site-packages/cvnets-0.2-py3.7.egg/cvnets/models/classification/base_cls.py", line 140, in extract_features
+    x = self.layer_5(x)
+  File "/data1/lyx/miniconda3/envs/torch/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data1/lyx/miniconda3/envs/torch/lib/python3.7/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "/data1/lyx/miniconda3/envs/torch/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data1/lyx/miniconda3/envs/torch/lib/python3.7/site-packages/cvnets-0.2-py3.7.egg/cvnets/modules/mobilevit_block.py", line 703, in forward
+    return self.forward_spatial(x)
+  File "/data1/lyx/miniconda3/envs/torch/lib/python3.7/site-packages/cvnets-0.2-py3.7.egg/cvnets/modules/mobilevit_block.py", line 655, in forward_spatial
+    patches = self.global_rep(patches)
+  File "/data1/lyx/miniconda3/envs/torch/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data1/lyx/miniconda3/envs/torch/lib/python3.7/site-packages/torch/nn/modules/container.py", line 204, in forward
+    input = module(input)
+  File "/data1/lyx/miniconda3/envs/torch/lib/python3.7/site-packages/torch/nn/modules/module.py", line 1190, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/data1/lyx/miniconda3/envs/torch/lib/python3.7/site-packages/torch/nn/modules/normalization.py", line 274, in forward
+    input, self.num_groups, self.weight, self.bias, self.eps)
+  File "/data1/lyx/miniconda3/envs/torch/lib/python3.7/site-packages/torch/nn/functional.py", line 2528, in group_norm
+    return torch.group_norm(input, num_groups, weight, bias, eps, torch.backends.cudnn.enabled)
+KeyboardInterrupt

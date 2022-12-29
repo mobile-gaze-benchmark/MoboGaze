@@ -1,0 +1,69 @@
+MoboGaze:
+    layer0:
+        img_channels: 3
+        out_channels: 64
+    layer1:
+        out_channels: 128
+        expand_ratio: 2 
+        num_blocks: 1 
+        stride: 1
+        block_type: "mv2"
+    layer2:
+        out_channels: 256
+        expand_ratio: 2
+        num_blocks: 2
+        stride: 2
+        block_type: "mv2"
+    layer3:
+        out_channels: 512
+        attn_unit_dim: 256
+        ffn_multiplier: 2
+        attn_blocks: 2
+        patch_h: 2
+        patch_w: 2 
+        stride: 2 
+        mv_expand_ratio: 2
+        block_type: "LMSA-Vit"
+    layer4:
+        out_channels: 768
+        attn_unit_dim: 384
+        ffn_multiplier: 2
+        attn_blocks: 4
+        patch_h: 2
+        patch_w: 2
+        stride: 2
+        mv_expand_ratio: 2
+        block_type: "LMSA-Vit"
+    layer5:
+        out_channels: 1024
+        attn_unit_dim: 512
+        ffn_multiplier: 2
+        attn_blocks: 3
+        patch_h: 2
+        patch_w: 2
+        stride: 2
+        mv_expand_ratio: 2
+        block_type: "LMSA-Vit"
+    last_layer_exp_factor: 4
+
+model:
+  classification:
+    name: "mobilevit_v2"
+    mitv2:
+      width_multiplier: 2.0
+      attn_norm_layer: "layer_norm_2d"
+    activation:
+      name: "swish"
+  normalization:
+    name: "batch_norm"
+    momentum: 0.1
+  activation:
+    name: "swish"
+  layer:
+    global_pool: "mean"
+    conv_init:  "kaiming_normal"
+    conv_init_std_dev: 0.02
+    linear_init: "trunc_normal"
+    linear_init_std_dev: 0.02
+        
+        
